@@ -1,0 +1,9 @@
+streamlit
+requests
+Pillow
+pypdf
+langchain-google-genai
+langchain-community
+faiss-cpu
+langchain-core
+langchain-classic
