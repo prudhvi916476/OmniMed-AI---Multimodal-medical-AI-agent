@@ -1,8 +1,60 @@
-# OmniMed-AI---Multimodal-medical-AI-agent
-An advanced, multimodal AI assistant prototype built for medical data analysis. OmniMed AI ingests both clinical texts and medical imaging to provide synthesized diagnostic insights based on retrieved medical guidelines.
+# Multimodal Clinical Decision Support System 🩺
 
-Welcome to OmniMed AI, an experimental clinical decision support tool designed to bridge the gap between visual diagnostics and textual patient data. By combining Vision-Language Models (VLMs) with a RAG (Retrieval-Augmented Generation) pipeline, this application simultaneously processes medical imaging (like MRIs and X-Rays) and clinical PDF notes to generate cohesive, guideline-backed diagnostic insights.
+A Streamlit-based prototype that demonstrates **Retrieval-Augmented Generation (RAG)**, **Vision-Language Models (VLM)**, and external API integration to assist with clinical decision-making.
 
-Wrapped in a premium, glassmorphism-styled Streamlit UI, the system also features automated FDA cross-referencing to check suggested medications for reported adverse reactions.
+> [!WARNING]
+> **DISCLAIMER**: This application is a prototype intended solely for demonstration purposes. It is **NOT** for real clinical or medical use.
 
-Disclaimer: This project is a prototype built for educational and demonstration purposes. It is not intended for real medical use or diagnostic purposes.
+---
+
+## 🚀 Features
+
+*   **PDF Report Analysis**: Extracts text from clinical notes or blood test reports using `pypdf`.
+*   **Medical Scan Vision Assessment**: Leverages Google Gemini 2.5 Flash Vision capabilities to analyze X-Rays, MRIs, and CT scans for visual abnormalities.
+*   **Retrieval-Augmented Generation (RAG)**: Integrates a local `FAISS` vector database containing clinical guidelines embedded with `gemini-embedding-001`.
+*   **openFDA Drug Verification**: Automatically checks generated clinical assessments for specific medications and fetches real-time adverse reactions from the official FDA events API.
+*   **Premium Glassmorphic UI**: Beautiful dark-mode UI with blur effects and session state history tracking.
+
+---
+
+## 🛠️ Tech Stack & Requirements
+
+*   **Streamlit**: Frontend interface.
+*   **LangChain**: Orchestration of RAG chains, prompts, and memory.
+*   **FAISS (CPU)**: In-memory vector store for guidelines lookup.
+*   **Google Gemini (via langchain-google-genai)**:
+    *   Embeddings: `models/gemini-embedding-001`
+    *   LLM & Multimodal: `gemini-2.5-flash`
+*   **openFDA API**: Querying adverse drug events.
+
+---
+
+## 📥 Setup & Installation
+
+### 1. Install Dependencies
+Make sure you have Python 3.8+ installed. Install the required libraries using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the App
+Launch the Streamlit app locally:
+
+```bash
+streamlit run multimodel.py
+```
+
+### 3. Provide API Key
+Once the application loads in your browser:
+1. Open the sidebar configuration panel.
+2. Paste your **Google Gemini API Key**.
+3. Upload a PDF clinical note and/or a medical image (X-Ray, MRI, CT) to begin generating diagnostic insights.
+
+---
+
+## 📂 Project Structure
+
+*   `multimodel.py`: Core Streamlit application code.
+*   `requirements.txt`: Python package dependencies.
+*   `README.md`: Project documentation.
